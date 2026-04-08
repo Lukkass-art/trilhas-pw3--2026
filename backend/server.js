@@ -1,10 +1,11 @@
-const express = require('express');
+const express = require("express");
+const cors = require("cors");
+const loginRoutes = require("./src/routes/loginRoutes");
 const app = express();
-
-app.get("/", (req, res) =>{
-    res.send(" Servidor Funcionando!");
-});
- 
-app.listen(3000,() =>{
-    console.log("Servidor rodando na porta 3000")
-});
+const PORT = 3000;
+app.use(cors());
+app.use(express.json());
+app.use("/api/login", loginRoutes);
+app.listen(3000, () => {
+   console.log("Servidor rodando na porta 3000");
+})
